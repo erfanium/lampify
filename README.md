@@ -2,6 +2,8 @@
 
 A GNOME Shell extension that controls cheap Bluetooth LE ceiling lamps from Quick Settings: on/off, light presets and pairing. No root, no extra daemons. It talks to the lamp through BlueZ over D-Bus.
 
+![Lampify in GNOME Quick Settings](screenshots/quick-settings.png)
+
 This started as a fork of [MasterDevX/lampify](https://github.com/MasterDevX/lampify), a C command-line tool. The protocol is now reimplemented in JavaScript, and the C code is gone.
 
 ## Features
