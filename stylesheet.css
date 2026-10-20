@@ -1,0 +1,48 @@
+/* Preset bar in the Lamp quick settings menu: a thin gradient track with a
+   round knob on the selected preset. Sized to sit well next to the stock
+   volume and brightness sliders. Colors come from lib/presets.js. */
+.lampify-bar {
+    height: 36px;
+}
+
+.lampify-track-half {
+    height: 6px;
+}
+
+.lampify-track-start {
+    border-radius: 3px 0 0 3px;
+}
+
+.lampify-track-end {
+    border-radius: 0 3px 3px 0;
+}
+
+.lampify-dot {
+    width: 3px;
+    height: 3px;
+    border-radius: 2px;
+    background-color: rgba(0, 0, 0, 0.32);
+}
+
+.lampify-dot-light {
+    background-color: rgba(255, 255, 255, 0.4);
+}
+
+.lampify-bar:hover .lampify-dot {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.lampify-bar:hover .lampify-dot-light {
+    background-color: rgba(255, 255, 255, 0.6);
+}
+
+.lampify-knob {
+    width: 30px;
+    height: 30px;
+    border-radius: 15px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.55);
+}
+
+.lampify-knob-icon {
+    icon-size: 16px;
+}

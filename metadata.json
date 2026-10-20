@@ -1,0 +1,8 @@
+{
+  "uuid": "lampify@erfanium.local",
+  "name": "Lampify",
+  "description": "Control LampSmart Pro / FanLamp Pro BLE lamps from Quick Settings: on/off, brightness, color temperature, night light and pairing. Uses BlueZ over D-Bus, no root needed.",
+  "shell-version": ["51"],
+  "settings-schema": "org.gnome.shell.extensions.lampify",
+  "url": "https://github.com/erfanium/lampify"
+}

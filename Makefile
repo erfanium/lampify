@@ -1,34 +1,28 @@
-CC     = gcc
-BASE   = lampify
-INST   = /usr/local/bin/
-CFLAG  = -Wall -Ofast
+UUID     = lampify@erfanium.local
+ZIP      = $(UUID).shell-extension.zip
+SOURCES  = metadata.json extension.js prefs.js stylesheet.css lib/*.js icons/*.svg schemas/*.xml
 
-PKG_CFLAGS = $(shell pkg-config --cflags glib-2.0 gdk-pixbuf-2.0 libnotify)
-PKG_LIBS   = $(shell pkg-config --libs glib-2.0 gdk-pixbuf-2.0 libnotify)
+all: $(ZIP)
 
-INC    = $(PKG_CFLAGS)
-LIB    = -lbluetooth $(PKG_LIBS)
+$(ZIP): $(SOURCES)
+	gnome-extensions pack --force \
+		--extra-source=lib --extra-source=icons \
+		--schema=schemas/org.gnome.shell.extensions.lampify.gschema.xml .
 
-SRC    = $(BASE).c
-OBJ    = $(SRC:.c=.o)
-
-all: $(BASE)
-
-$(BASE): $(OBJ)
-	$(CC) $(CFLAG) -o $@ $^ $(LIB)
-
-%.o: %.c
-	$(CC) $(CFLAG) $(INC) -c -o $@ $<
-
-clean:
-	rm -f $(BASE) $(OBJ)
-
-install: all
-	install -d $(INST)
-	install -m 755 $(BASE) $(INST)
-	setcap 'cap_net_raw,cap_net_admin+eip' $(INST)$(BASE)
+# Installs for the current user. Log out and back in (Wayland) to load it the
+# first time, then: gnome-extensions enable $(UUID)
+install: $(ZIP)
+	gnome-extensions install --force $(ZIP)
 
 uninstall:
-	rm -f $(INST)$(BASE)
+	gnome-extensions uninstall $(UUID)
 
-.PHONY: all clean install uninstall
+# Runs a nested GNOME Shell with only this extension enabled, without
+# touching your real session settings. Run `make install` first.
+dev:
+	./tools/dev-shell.sh
+
+clean:
+	rm -f $(ZIP)
+
+.PHONY: all install uninstall dev clean

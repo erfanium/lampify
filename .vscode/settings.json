@@ -1,9 +1,0 @@
-{
-  "files.associations": {
-    "hci.h": "c",
-    "hci_lib.h": "c",
-    "cerrno": "c",
-    "bluetooth.h": "c",
-    "glib.h": "c"
-  }
-}

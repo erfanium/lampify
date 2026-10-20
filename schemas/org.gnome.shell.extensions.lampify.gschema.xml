@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist>
+  <schema id="org.gnome.shell.extensions.lampify" path="/org/gnome/shell/extensions/lampify/">
+    <key name="power" type="b">
+      <default>false</default>
+      <summary>Last power state sent to the lamp</summary>
+    </key>
+    <key name="preset" type="s">
+      <choices>
+        <choice value="night"/>
+        <choice value="dim"/>
+        <choice value="warm"/>
+        <choice value="bright"/>
+        <choice value="cool"/>
+      </choices>
+      <default>'bright'</default>
+      <summary>Last light preset sent to the lamp</summary>
+    </key>
+    <key name="keyboard-backlight" type="b">
+      <default>true</default>
+      <summary>Turn the keyboard backlight on when the lamp goes off, and off when it goes on</summary>
+    </key>
+    <key name="device-id" type="i">
+      <range min="-1" max="65535"/>
+      <default>-1</default>
+      <summary>ID this computer uses to talk to the lamp</summary>
+      <description>-1 derives it from the hostname, like the original lampify tool, so lamps paired with it keep working.</description>
+    </key>
+    <key name="adapter" type="s">
+      <default>''</default>
+      <summary>Bluetooth adapter name, such as hci0. Empty picks the first powered one.</summary>
+    </key>
+  </schema>
+</schemalist>
